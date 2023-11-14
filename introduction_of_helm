@@ -32,7 +32,7 @@ apiVersion: v2
 name: node-app-chart
 description: A Helm chart for a Node.js application
 version: 0.1.0
-Section 5: Default Values (values.yaml)
+
 
 ### Edit values.yaml to include: ###
 
