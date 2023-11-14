@@ -22,10 +22,10 @@ helm rollback [NAME] [REVISION]: Roll back a release to a specific revision.
 
 :
 
-helm create node-app-chart
+### helm create node-app-chart ###
 This will create a folder named node-app-chart with the initial chart structure.
 
-Section 4: Chart Metadata (Chart.yaml)
+### Chart Metadata (Chart.yaml) ###
 Open Chart.yaml and modify it for your application:
 
 apiVersion: v2
@@ -33,7 +33,8 @@ name: node-app-chart
 description: A Helm chart for a Node.js application
 version: 0.1.0
 Section 5: Default Values (values.yaml)
-Edit values.yaml to include:
+
+### Edit values.yaml to include: ###
 
 replicaCount: 1
 
@@ -46,7 +47,9 @@ service:
   type: NodePort
   port: 30007
   targetPort: 8000
-Section 6: Deployment Manifest (templates/deployment.yaml)
+
+### Deployment Manifest (templates/deployment.yaml) ###
+
 Modify deployment.yaml under templates/ to look like this:
 
 apiVersion: apps/v1
@@ -69,7 +72,9 @@ spec:
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
         - containerPort: 8000
-Section 7: Service Manifest (templates/service.yaml)
+
+### Service Manifest (templates/service.yaml) ###
+
 Open service.yaml under templates/ and modify it:
 
 apiVersion: v1
@@ -84,7 +89,8 @@ spec:
     nodePort: {{ .Values.service.port }}
   selector:
     app: {{ .Release.Name }}
-Section 8: Deploying the Helm Chart
+
+### Deploying the Helm Chart ###
 Use these commands to package and deploy the chart:
 
 # Package the chart (Optional)
